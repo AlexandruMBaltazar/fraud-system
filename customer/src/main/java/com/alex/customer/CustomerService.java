@@ -1,13 +1,16 @@
 package com.alex.customer;
-
-import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 @Service
-public record CustomerService(ModelMapper modelMapper) {
+public record CustomerService(CustomerRepository customerRepository) {
 
     public void registerCustomer(CustomerRegistrationRequest request) {
-        Customer customer = modelMapper.map(request, Customer.class);
+        Customer customer = Customer.builder()
+                .firstName(request.firstName())
+                .lastName(request.lastName())
+                .email(request.email())
+                .build();
 
+        customerRepository().save(customer);
     }
 }
