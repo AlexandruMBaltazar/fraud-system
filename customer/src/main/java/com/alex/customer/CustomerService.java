@@ -17,10 +17,8 @@ public record CustomerService(
 
         customerRepository().saveAndFlush(customer);
 
-        // TODO: Eureka server for service discovery as RestTemplate is not a good way
-
         FraudCheckResponse fraudCheckResponse = restTemplate.getForObject(
-                "http://localhost:8081/api/v1/fraud-check/{customerId}",
+                "http://FRAUD/api/v1/fraud-check/{customerId}",
                 FraudCheckResponse.class,
                 customer.getId()
         );
