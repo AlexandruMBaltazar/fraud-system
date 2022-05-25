@@ -1,6 +1,6 @@
 package com.alex.fraud;
 
-import org.springframework.http.HttpStatus;
+import com.alex.clients.fraud.FraudCheckResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
